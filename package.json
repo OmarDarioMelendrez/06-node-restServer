@@ -1,0 +1,27 @@
+{
+  "name": "06-node-restserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OmarDarioMelendrez/06-node-restServer.git"
+  },
+  "author": "Omar Dario Melendrez <melendrezomar2@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OmarDarioMelendrez/06-node-restServer/issues"
+  },
+  "homepage": "https://github.com/OmarDarioMelendrez/06-node-restServer#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
