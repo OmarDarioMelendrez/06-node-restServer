@@ -16,6 +16,7 @@ const getAllUsers = (req, res) => {
             name: 'Marta'
         },
     ]
+    throw new Error('ocurrio un error al obtener los datos');
     res.json(users);
 };
 
