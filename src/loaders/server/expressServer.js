@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
-const swaggerUi = require('swagger-ui-express')
+const swaggerUi = require('swagger-ui-express');
+const logger = require('../logger');
 const config = require('../../config');
 
 class ExpressServer {
@@ -12,7 +13,7 @@ class ExpressServer {
         this._middlewares();
         
         this._swaggerConfig();
-        
+
         this._routes();
         
         this._notFound();
@@ -46,14 +47,16 @@ class ExpressServer {
     _errorHandler() {
         this.app.use((err,req, res,next) => {
             const code = err.code || 500;
-            res.status(code);
+            logger.error(`${code} - ${err.message} - ${req.originalUrl} - ${req.method} - ${req.ip}`)
+            logger.error(err.stack)
+            
             const body = {
                 error:{
                     code,
                     message: err.message
                 }
             }
-            res.json(body)
+            res.status(code).json(body)
         })
     }
 
@@ -68,7 +71,7 @@ class ExpressServer {
     async start() {
         this.app.listen(this.port, (error) => {
             if(error) {
-                console.log(err);
+                logger.error(err);
                 process.exit(1);
                 return;
             }
